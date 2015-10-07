@@ -8,6 +8,7 @@
 #define ALERT(str) [[[UIAlertView alloc] initWithTitle:@"Alert" message:str delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil] show]
 
 NSString *const UserTokenKey = @"user_token";
+NSString *const BackendURL = @"https://secret-escarpment-2186.herokuapp.com/pay";
 
 @implementation MainViewController
 
@@ -79,7 +80,7 @@ NSString *const UserTokenKey = @"user_token";
                            @"user_token" :   userToken
                            };
 
-  [manager POST:@"http://localhost:9292/pay" parameters:params
+  [manager POST:BackendURL parameters:params
         success:^(AFHTTPRequestOperation *operation, id responseObject) {
           // show QR Code for the movie.
           [self showQRView];
